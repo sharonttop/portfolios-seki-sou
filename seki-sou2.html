@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>seki-sou2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./fontawesome-free-5.15.3-web/css/all.css">
+    <style>
+          .l-header__block1{
+            justify-content: space-between;
+        }
+        .logo{
+            width:16%;
+            min-width: 170px;
+        }
+        .logo>img{
+            height: auto;
+            width: 100%;
+            object-fit: cover;
+        }
+        a{
+            font-family: YakuHanJP, "Kyoukasho ICA Medium", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "リュウミン R-KL", "游明朝", YuMincho, "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+            letter-spacing:1.2px;
+            text-decoration:none;
+        }
+
+        p {
+            font-family: YakuHanJP, "Kyoukasho ICA Medium", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "リュウミン R-KL", "游明朝", YuMincho, "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+        }
+
+        .mo-only>ul>li{
+            /* list-style: none; nav已處理掉li的點點*/
+            padding: 0.5rem;
+        }
+
+        .mo-nav>li>a{
+            font-size: 1rem;
+            writing-mode: vertical-lr;/* 手機優先，垂直文字 */
+            text-decoration:none;/* 去底線 */
+            color: black;
+        }
+        .mo-nav>li>a:hover{
+            opacity: 0.7;
+        }
+        .l-kv__slider{
+            width: 100%;
+        }
+        .l-kv__slider>a>img{
+            height: auto;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .l-kv__products{
+            width: 100%;
+        }
+        .l-kv__products>ul{
+            padding-left: 0;
+        }
+        .l-kv__products>ul>li{
+            list-style: none;
+            position: relative;
+        }
+        .l-kv__products>ul>li:hover{
+            opacity: 0.7;
+        }
+        .l-kv__products>ul>li>a>img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .l-kv__products>ul>li>a>p{
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            margin-bottom: 9px;
+            margin-left: 14px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .products-bgc{
+            background-color: #F7F3EC;
+        }
+
+        .p-title{
+            font-weight: 500;
+            font-size:1.5rem;
+            text-align: center;
+            padding-top: 60px;
+            margin-bottom:40px;
+
+        }
+        .products-img{
+            width: 100%;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .products-img>img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .products-recommend{
+            position:absolute;
+            width: 7.5%;
+            right: 0;
+            top: 0;
+        }
+        .products-recommend>img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .category{
+            font-size: 0.8rem;
+            color: #BDA366;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .p-info{
+            font-size: 0.9rem;
+            line-height: 150%;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .product-price1{
+            font-size: 1rem;
+            line-height: 150%;
+            font-weight: 500;
+        }
+        .product-price2{
+            font-size: 0.9rem;
+            line-height: 150%;
+            /* font-weight:bold; */
+            margin-left:5px;
+            margin-bottom: 50px;
+        }
+        .products-info{
+                margin-right:15px;
+                margin-left:15px;
+            }
+        
+        .gift-img-all{
+            margin-right:15px;
+            margin-left:15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .ranking-all{
+                margin-right: 5%;
+                margin-left: 5%;
+            }
+        .ranking-img{
+            position: relative;
+            /* width: 50%; */
+            /* 有沒有更好不會變形的方法 */
+        }
+        .ranking-img>img{
+            height:auto;
+            width: 100%;
+            object-fit: cover;
+        }
+        .r-text-box{
+            margin:15px;
+            margin-left: 0px;
+        }
+        .gift-price{
+            font-size:0.8rem;
+            margin-bottom: 10px;
+        }
+        .ranking-number{
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 1.2rem;
+            text-align:center;
+            z-index: 1;
+            position: absolute;
+            width: 17.196%;
+            height: 20%;
+            background-color: #BDA366;
+            right: 15px;
+            top: 0;
+            
+        }
+        .ranking-part{
+            border-bottom: 1px solid #ddd;
+        }
+        .product-category>ul>li>a>img{
+            height:auto;
+            width: 100%;
+            object-fit: cover;
+        }
+        .product-category>ul>li>a>img:hover{
+            opacity: 0.7;
+        }
+        .product-category>ul>li>a{
+            color: #000;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .product-category>ul>li>a:hover{
+            color: #BDA366;
+            
+        }
+        .product-category>ul>li>a>p{
+            margin-top: 5px;            
+        }
+        /* footer */
+        .footer-bgc{
+            background: #000;
+        }
+        /* .footer-1{
+                flex-direction: column;
+        } */
+        .footer-logo{
+            width:96px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10%;
+            margin-bottom: 10%;
+        }
+        .footer-logo>img{
+            height:100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .footer-1>p{
+            white-space:nowrap;
+            padding: 10px;
+            margin-right: 27%;
+            margin-left: 27%;
+            color:#ffffff;
+            font-size: .8rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .phone,.company{
+            margin-top: 0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            }
+
+        .footer-2>.phone,.company>p{
+            color:#ffffff;
+        }
+        .phone-title{
+            font-size:1.2rem;
+            margin-top: 10%;
+            margin-bottom: 5%;
+            margin-left: 5%;
+        }
+        /* .phone-title>i{
+            font-size:.8rem;
+        } */
+        .phone-detail{
+            font-size:.9rem;
+            margin-bottom: 10%;
+            margin-left: 5%;
+        }
+        .company-detail{
+            margin-top: 5%;
+        }
+        .p-cate>p{
+            margin-top: 20px;
+
+        }
+        .company-detail>.p-cate>p{
+            margin-top: 10%;
+            margin-left: 10px;
+        }
+        /* .company-detail>.p-cate>ul{
+            margin-top: 20px;
+            
+        } */
+        .company-detail>.p-cate>ul>li{
+            margin-left: 10px;
+            
+        }
+        .company-detail>.p-cate>ul>li>a{
+            color: rgba(255, 255, 255, 0.5);
+            font-size:0.8rem;
+        }
+        .footer-2>.company-detail>.p-cate>p,ul>li>a{
+            color:#ffffff;
+            text-decoration:none;
+        }
+
+
+        /* pc */
+        @media (min-width: 576px) { 
+            .mo-nav>li>a{
+            writing-mode: horizontal-tb;/* 水平文字 */
+            }
+            .l-kv__slider{
+            width: 33.3%;
+            }
+            .l-kv__products{
+            width: 66.7%;
+            }
+            .products-info-all{
+                margin-right: 60px;
+                margin-left:60px;
+            }
+            .products-info{
+                margin-right:20px;
+                margin-left:20px;
+            }
+            .gift-img-all{
+                margin-right: 10%;
+                margin-left: 10%;
+            }
+            .ranking-p{
+                flex-direction:column;
+            }
+            .ranking-img{
+                /* 有沒有更好不會變形的方法，目前是去百分比，在使用margin調整置中 */
+                margin-left : auto;
+                margin-right : auto;
+                /* justify-content: center;      */
+                width: 100%;
+            }
+            .ranking-all{
+                margin-right: 10%;
+                margin-left: 10%;
+            }
+            .product-category-list{
+                margin-right: 10%;
+                margin-left: 10%;
+            }
+            /* footer */
+            .phone,.company{
+            margin-top: 5%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            }
+            /* .footer-logo{
+                margin-right: 10%;  
+            } */
+            .footer-bgc{
+                padding-left: 10%;
+                padding-right: 10%;
+            }
+            .footer-1>p{
+                margin-top: 50%;
+                writing-mode: vertical-lr;/* 手機優先，垂直文字 */
+                margin-right: auto;
+                margin-left: auto;
+            }
+            .company-detail>.p-cate>p{
+                margin-top: 0;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <nav class="l-header__block1 d-flex p-3">
+        <div class="logo pr-2">
+            <a href="/#">
+                <img src="./images/logo.svg" alt="">
+            </a>
+        </div>
+        <div class="mo-only">
+            <ul class="nav mo-nav d-flex">
+                <li><a href="/#">商品一覽</a></li>
+                <li><a href="/#">ギフト商品</a></li>
+                <li><a href="/#">送料込みの商品</a></li>
+                <li><a href="/#">お試し商品</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="slider-p-bar">
+        <div class="ec-layoutRole__mainTop d-flex flex-wrap">
+            <div class="l-kv__slider mb-0">
+                <a href="/#">
+                    <img src="./images/kv_slider_img1.jpg" alt="">
+                </a>
+            </div>
+            <div class="l-kv__products">
+                <ul  class="products d-flex flex-wrap mb-0">
+                    <li class="col-6 col-sm-4 p-0">
+                        <a href="/#">
+                            <img src="./images/kv_nav2.jpg" alt="">
+                            <p class=" typesquare_option">ギフト商品</p>
+                        </a>
+                    </li>
+                    <li class="col-6 col-sm-4 p-0">
+                        <a href="/#">
+                            <img src="./images/kv_nav3.jpg" alt="">
+                            <p class=" typesquare_option">温泉湯豆腐</p>
+                        </a>
+                    </li>
+                    <li class="col-6 col-sm-4 p-0">
+                        <a href="/#">
+                            <img src="./images/kv_nav4.jpg" alt="">
+                            <p class=" typesquare_option">佐嘉おぼろ</p>
+                        </a>
+                    </li>
+                    <li class="col-6 col-sm-4 p-0">
+                        <a href="/#">
+                            <img src="./images/kv_nav5.jpg" alt="">
+                            <p class=" typesquare_option">デザート・豆乳もち</p>
+                        </a>
+                    </li>
+                    <li class="col-6 col-sm-4 p-0">
+                        <a href="/#">
+                            <img src="./images/kv_nav6.jpg" alt="">
+                            <p class=" typesquare_option">その他</p>
+                        </a>
+                    </li>
+                    <li class="col-6 col-sm-4 p-0">
+                        <a href="/#">
+                            <img src="./images/kv_nav1.jpg" alt="">
+                            <p class=" typesquare_option">お試し商品</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="products-bgc">
+        <p class="p-title">平川屋の定番商品</p>
+        <div class="products-info-all d-flex flex-wrap">
+            <div class="products-info col-md">
+                <div class="text-box">
+                    <p class="category">ご贈答に最適／化粧箱入 温泉湯豆腐セット</p>
+                    <p class="p-info">嬉野温泉名物「温泉湯豆腐」が、贈り物に最適なギフト仕様になった人気のセットです。</p>
+                </div>
+                <div class="products-img">
+                        <img src="./images/img1.jpg" alt="">
+                        <div class="products-recommend">
+                            <img src="./images/icon_recommend.svg" alt="">
+                        </div>
+                </div>
+
+                <div class="price-text-box">
+                    <p class="product-price1">【送料込】温泉湯豆腐３丁入り（胡麻だれ付き）</p>
+                    <p class="product-price2">3,240円（税込）</p>
+                </div>
+            </div>
+            <div class="products-info col-md">
+                <div class="text-box">
+                    <p class="category">ご家庭向け／温泉湯豆腐セット</p>
+                    <p class="p-info">ご家庭で手軽に嬉野温泉名物「温泉湯豆腐」の美味しさをお試しいただけるセットです。</p>
+                </div>
+                <div class="products-img">
+                    <img src="./images/img2.jpg" alt="">
+                </div>
+                <div class="price-text-box">
+                    <p class="product-price1">ご家庭用　温泉湯豆腐６丁入り（胡麻だれ・ぽん酢付き）</p>
+                    <p class="product-price2">2,916円（税込）</p>
+                </div>
+            </div>
+            <div class="products-info col-md">
+                <div class="text-box">
+                    <p class="category">ご贈答向け／化粧箱入 豆乳もちセット</p>
+                    <p class="p-info">4つの味「黒蜜・きな粉」「抹茶蜜」「みたらし」「つぶあん」を詰め合わせました。</p>
+                </div>
+                <div class="products-img">
+                    <img src="./images/img3.jpg" alt="">
+                </div>
+                <div class="price-text-box">
+                    <p class="product-price1">豆乳もちセット（箱入り）４種類詰合せ</p>
+                    <p class="product-price2">2,980円（税込）</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="products-gift">
+        <p class="p-title">季節のおすすめ・ギフト特集</p>
+        <div class="products-info-all gift-img-all d-flex flex-wrap">
+            <div class="products-info col-md-4">
+                <div class="products-img gift-img">
+                        <img src="./images/recommend_img1.jpg" alt="">
+                </div>
+            </div>
+            <div class="products-info col-md-4">
+                <div class="products-img gift-img">
+                        <img src="./images/banner.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ranking-part">
+        <p class="p-title">人気ランキング</p>
+        <div class="ranking-all d-flex flex-wrap">
+            <div class="ranking-p col-md d-flex p-0 pb-4">
+                <div class="ranking-img col-6 col-md">
+                    <img src="./images/0408113251_606e6b537a68e.jpg" alt="">
+                    <div class="ranking-number">1</div>
+                </div>
+                <div class="r-text-box col-6 col-md">
+                    <p class="product-price1 gift-price">【送料込】温泉湯豆腐４丁入り（胡麻だれ・ぽん酢付き）</p>
+                    <p class="product-price1 gift-price">4,320円 （税込）</p>
+                </div>
+            </div>
+            <div class="ranking-p col-md d-flex p-0 pb-4">
+                <div class="ranking-img  col-6 col-md">
+                    <img src="./images/0408113303_606e6b5f0cdcc.jpg" alt="">
+                    <div class="ranking-number" style="background-color: #ABA8A8;">2</div>
+                </div>
+                <div class="r-text-box col-6 col-md">
+                    <p class="product-price1 gift-price">【送料込】温泉湯豆腐３丁入り（胡麻だれ・ぽん酢付き）</p>
+                    <p class="product-price1 gift-price">3,780円 （税込）</p>
+                </div>
+            </div>
+            <div class="ranking-p col-md d-flex p-0 pb-4">
+                <div class="ranking-img col-6 col-md">
+                    <img src="./images/0408113310_606e6b669b956.jpg" alt="">
+                    <div class="ranking-number"  style="background-color: #884900;">3</div>
+                </div>
+                <div class="r-text-box col-6 col-md">
+                    <p class="product-price1 gift-price">【送料込】温泉湯豆腐３丁入り（胡麻だれ付き）</p>
+                    <p class="product-price1 gift-price">3,240円 （税込）</p>
+                </div>
+            </div>
+            <div class="ranking-p col-md d-flex p-0 pb-4">
+                <div class="ranking-img col-6 col-md">
+                    <img src="./images/0326181643_605da67b14e1c.jpg" alt="">
+                    <div class="ranking-number" style="background-color: #eee;color: #979797;">4</div>
+                </div>
+                <div class="r-text-box col-6 col-md">
+                    <p class="product-price1 gift-price">【送料込】温泉湯豆腐２丁入り（胡麻だれ付き）</p>
+                    <p class="product-price1 gift-price">2,160円 （税込）</p>
+                </div>
+            </div>
+            <div class="ranking-p col-md d-flex p-0 pb-4">
+                <div class="ranking-img col-6 col-md">
+                    <img src="./images/0326180942_605da4d68fc7b.jpg" alt="">
+                    <div class="ranking-number" style="background-color: #eee;color: #979797;">5</div>
+                </div>
+                <div class="r-text-box col-6 col-md">
+                    <p class="product-price1 gift-price">ご家庭用　温泉湯豆腐６丁入り（胡麻だれ・ぽん酢付き）</p>
+                    <p class="product-price1 gift-price">2,916円 （税込）</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-category">
+        <p class="p-title">商品カテゴリから探す</p>
+        <ul class="product-category-list list-unstyled d-flex flex-wrap p-4">
+            <li class="col-6 col-md-4">
+                <a href="/#">
+                    <img src="/images/category_img1.jpg" alt="">
+                    <p>ギフト商品</p>
+                </a>
+            </li>
+            <li class="col-6 col-md-4">
+                <a href="/#">
+                    <img src="/images/category_img2.jpg" alt="">
+                    <p>温泉湯豆腐</p>
+                </a>
+            </li>
+            <li class="col-6 col-md-4">
+                <a href="/#">
+                    <img src="/images/category_img3.jpg" alt="">
+                    <p>佐嘉おぼろ</p>
+                </a>
+            </li>
+            <li class="col-6 col-md-4">
+                <a href="/#">
+                    <img src="/images/category_img4.jpg" alt="">
+                    <p>デザート/豆乳もち他</p>
+                </a>
+            </li>
+            <li class="col-6 col-md-4">
+                <a href="/#">
+                    <img src="/images/category_img5.jpg" alt="">
+                    <p>その他</p>
+                </a>
+            </li>
+            <li class="col-6 col-md-4">
+                <a href="#">
+                    <img src="/images/category_img6.jpg" alt="">
+                    <p>お試し商品</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <footer>
+        <div class="footer-bgc d-flex flex-wrap">
+            <div class="footer-1 flex-column col-md-3">
+                <div class="footer-logo">
+                    <img src="./images/logo_2-white.svg" alt="">
+                </div>
+                <p>佐嘉 平川屋について</p>
+            </div>
+            <div class="footer-2 d-flex flex-wrap col-md-9">
+                <div class="phone col-md-6">
+                    <p class="phone-title">お電話でのご注文&nbsp;<i class="fas fa-chevron-right"></i></p>
+                    <p class="phone-detail">TEL:0120-35-4112<br>
+                        月～土 9:00～17:00（日曜以外は、祝日も営業）</p>
+                </div>
+                <div class="company col-md-6">
+                    <p class="phone-title">会社概要&nbsp;<i class="fas fa-chevron-right"></i></p>
+                    <p class="phone-detail">佐嘉 平川屋について</p>
+                </div>
+                <div class="company-detail col-12">
+                    <div class="p-cate">
+                        <p>商品カテゴリ</p>
+                        <ul class="list-unstyled d-flex flex-wrap">
+                            <li><a  href="/#">ギフト商品</a></li>
+                            <li><a  href="/#">温泉湯湯豆腐</a></li>
+                            <li><a  href="/#">佐嘉おぼろ</a></li>
+                            <li><a  href="/#">デザート／豆乳もち</a></li>
+                            <li><a  href="/#">その他</a></li>
+                            <li><a  href="/#">お試し商品</a></li>
+                        </ul>
+                    </div>
+                    <div class="p-cate">
+                        <p>ご利用ガイド</p>
+                        <ul class="list-unstyled d-flex flex-wrap">
+                            <li><a  href="/#">ご利用ガイドトップ</a></li>
+                            <li><a  href="/#">会員登録・ポイントについて</a></li>
+                            <li><a  href="/#">お買い物の手順</a></li>
+                            <li><a  href="/#">ギフト包装（のし）について</a></li>
+                            <li><a  href="/#">お支払い方法について</a></li>
+                            <li><a  href="/#"> 発送について</a></li>
+                            <li><a  href="/#"> ご利用上の注意点</a></li>
+                            <li><a  href="/#"> プライバシーポリシー</a></li>
+                            <li><a  href="/#"> お問い合わせ</a></li>
+                            <li><a  href="/#"> 領収書について</a></li>
+                        </ul>
+                    </div>
+                    <div class="p-cate">
+                        <p>情報・お知らせ</p>
+                        <ul class="list-unstyled d-flex flex-wrap">
+                            <li><a  href="/#">温泉湯豆腐の作り方</a></li>
+                            <li><a  href="/#">特定商取引法に基づく表記</a></li>
+                        </ul>
+                    </div>
+                    <div class="p-cate">
+                        <p>公式SNS・メールマガジン</p>
+                        <ul class="list-unstyled d-flex flex-wrap">
+                            <li><a  href="/#"><i class="fab fa-facebook"></i>&nbsp;Facebook</a></li>
+                            <li><a  href="/#"> <i class="fab fa-instagram"></i>&nbsp;Instagram</a></li>
+                            <li><a  href="/#">メールマガジン</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <!-- 以下引用 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    
+</body>
+</html>
