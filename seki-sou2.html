@@ -38,6 +38,10 @@
         .mo-only>ul>li{
             /* list-style: none; nav已處理掉li的點點*/
             padding: 0.5rem;
+            /* flex-shrink:0; */
+            
+            /* width:-moz-fit-content; */
+
         }
 
         .mo-nav>li>a{
@@ -45,6 +49,10 @@
             writing-mode: vertical-lr;/* 手機優先，垂直文字 */
             text-decoration:none;/* 去底線 */
             color: black;
+            /* line-height: normal; */
+            display:inline-block;
+            block-size: 1rem;
+
         }
         .mo-nav>li>a:hover{
             opacity: 0.7;
@@ -246,11 +254,12 @@
         .footer-1>p{
             white-space:nowrap;
             padding: 10px;
-            margin-right: 27%;
-            margin-left: 27%;
+            margin-right:auto;
+            margin-left: auto;
             color:#ffffff;
             font-size: .8rem;
             border: 1px solid rgba(255, 255, 255, 0.3);
+            width: fit-content;/* 以內容物的寬為主 */
         }
         .phone,.company{
             margin-top: 0;
@@ -377,7 +386,7 @@
             </a>
         </div>
         <div class="mo-only">
-            <ul class="nav mo-nav d-flex">
+            <ul class="mo-nav d-flex list-unstyled">
                 <li><a href="/#">商品一覽</a></li>
                 <li><a href="/#">ギフト商品</a></li>
                 <li><a href="/#">送料込みの商品</a></li>
@@ -596,7 +605,7 @@
     </div>
     <footer>
         <div class="footer-bgc d-flex flex-wrap">
-            <div class="footer-1 flex-column col-md-3">
+            <div class="footer-1  d-flex flex-column col-md-3">
                 <div class="footer-logo">
                     <img src="./images/logo_2-white.svg" alt="">
                 </div>
